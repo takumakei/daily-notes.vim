@@ -29,7 +29,7 @@ Insert header block like below:
 [YYYY-MM-DD hh:mm:ss]
 ```
 
-## `:DailyNotesTimeStamp`
+## `:DailyNotesTimestamp`
 
 ![normal mode: &lt;Leader&gt;dt](https://img.shields.io/badge/normal_mode-%3CLeader%3Edt-green.svg?style=flat-square) ![insert mode: &lt;C-&#x005d;&gt;t](https://img.shields.io/badge/insert_mode-%3CC--%5D%3Et-green.svg?style=flat-square)
 
