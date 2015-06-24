@@ -34,7 +34,7 @@ set cpo&vim
 let g:daily_notes_base = get(g:, 'daily_notes_base', '~/daily-notes')
 "}}}
 
-function! g:DailyNotes(...) "{{{
+function! s:dailynotes_edit(...) "{{{
   let diff = a:0 >= 1 ? a:1 : 0
   let now = localtime() + (diff * 24 * 60 * 60)
   let ary = [ "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" ]
@@ -45,26 +45,26 @@ function! g:DailyNotes(...) "{{{
   execute ":normal G"
 endfunction"}}}
 
-function! g:DailyNotesHeader() "{{{
+function! s:dailynotes_header() "{{{
   let a = line(".")
   let h = "----------------------------------------------------------------------"
   call append(a, [h,"","[".strftime('%Y-%m-%d %H:%M:%S', localtime())."]","",""])
   call cursor(a + 5, 0)
 endfunction"}}}
 
-function! g:DailyNotesTimeStamp() "{{{
+function! s:dailynotes_timestamp() "{{{
   call append(line(".") - 1, ["[".strftime('%Y-%m-%d %H:%M:%S', localtime())."]"])
 endfunction"}}}
 
-command! -nargs=? DailyNotes          call DailyNotes(<q-args>)
-command! -nargs=0 DailyNotesHeader    call DailyNotesHeader()
-command! -nargs=0 DailyNotesTimeStamp call DailyNotesTimeStamp()
+command! -nargs=? DailyNotes          call <SID>dailynotes_edit(<q-args>)
+command! -nargs=0 DailyNotesHeader    call <SID>dailynotes_header()
+command! -nargs=0 DailyNotesTimestamp call <SID>dailynotes_timestamp()
 
 " Keymappings "{{{
-nnoremap <Leader>dh :call DailyNotesHeader()<CR>
-nnoremap <Leader>dt :call DailyNotesTimeStamp()<CR>
-inoremap <C-]>h <C-o>:call DailyNotesHeader()<CR>
-inoremap <C-]>t <C-o>:call DailyNotesTimeStamp()<CR>
+nnoremap <Leader>dh :DailyNotesHeader<CR>
+nnoremap <Leader>dt :DailyNotesTimestamp<CR>
+inoremap <C-]>h <C-o>:DailyNotesHeader<CR>
+inoremap <C-]>t <C-o>:DailyNotesTimestamp<CR>
 "}}}
 
 let &cpo = s:save_cpo
