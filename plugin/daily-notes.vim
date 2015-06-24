@@ -2,6 +2,9 @@ if exists('g:loaded_daily_notes')
   finish
 endif
 
+let s:save_cpo = &cpo
+set cpo&vim
+
 let g:daily_notes_base = get(g:, 'daily_notes_base', '~/daily-notes')
 
 function! g:DailyNotes(...)
@@ -34,5 +37,8 @@ nnoremap <Leader>dh :call DailyNotesHeader()<CR>
 nnoremap <Leader>dt :call DailyNotesTimeStamp()<CR>
 inoremap <C-]>h <C-o>:call DailyNotesHeader()<CR>
 inoremap <C-]>t <C-o>:call DailyNotesTimeStamp()<CR>
+
+let &cpo = s:save_cpo
+unlet s:save_cpo
 
 let g:loaded_daily_notes = 1
