@@ -34,3 +34,5 @@ nnoremap <Leader>dh :call DailyNotesHeader()<CR>
 nnoremap <Leader>dt :call DailyNotesTimeStamp()<CR>
 inoremap <C-]>h <C-o>:call DailyNotesHeader()<CR>
 inoremap <C-]>t <C-o>:call DailyNotesTimeStamp()<CR>
+
+let g:loaded_daily_notes = 1
