@@ -1,4 +1,4 @@
-"=============================================================================
+"============================================================================="{{{"}}}
 " FILE: daily-notes.vim
 " AUTHOR: takumakei@gmail.com
 " License: MIT license  {{{
@@ -59,13 +59,6 @@ endfunction"}}}
 command! -nargs=? DailyNotes          call <SID>dailynotes_edit(<q-args>)
 command! -nargs=0 DailyNotesHeader    call <SID>dailynotes_header()
 command! -nargs=0 DailyNotesTimestamp call <SID>dailynotes_timestamp()
-
-" Keymappings "{{{
-nnoremap <Leader>dh :DailyNotesHeader<CR>
-nnoremap <Leader>dt :DailyNotesTimestamp<CR>
-inoremap <C-]>h <C-o>:DailyNotesHeader<CR>
-inoremap <C-]>t <C-o>:DailyNotesTimestamp<CR>
-"}}}
 
 let &cpo = s:save_cpo
 unlet s:save_cpo
